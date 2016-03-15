@@ -1,18 +1,14 @@
 # IAPDelvelopWithSwift
 iOS开发之内购-AppStore
 1.在应用启动时添加一个交易队列观察者
-
-```SKPaymentQueue.defaultQueue().addTransactionObserver(self)
-```
+`SKPaymentQueue.defaultQueue().addTransactionObserver(self)`
 2.询问苹果的服务器能够销售哪些商品
-  
-```func requestProducts(){
+`func requestProducts(){
         let set = NSSet(array: productArr)
         let request = SKProductsRequest(productIdentifiers: set as! Set<String>)
         request.delegate = self
         request.start()
-    }
-```  
+    }`
 3.点击某项商品后，并且在获取到商品列表后进行购买
 
 
