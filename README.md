@@ -1,18 +1,26 @@
 # IAPDelvelopWithSwift
 iOS开发之内购-AppStore
 1.在应用启动时添加一个交易队列观察者
-`SKPaymentQueue.defaultQueue().addTransactionObserver(self)`
+
+```
+SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+```
+
 2.询问苹果的服务器能够销售哪些商品
-`func requestProducts(){
+
+```
+func requestProducts(){
         let set = NSSet(array: productArr)
         let request = SKProductsRequest(productIdentifiers: set as! Set<String>)
         request.delegate = self
         request.start()
-    }`
+    }
+```
 3.点击某项商品后，并且在获取到商品列表后进行购买
 
 
-```extension PayManager : SKProductsRequestDelegate {
+```
+extension PayManager : SKProductsRequestDelegate {
     func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
         let products = response.products
         if products.count == 0 {
@@ -38,7 +46,8 @@ iOS开发之内购-AppStore
 ```
 4.进行购买
 
-```func buyProducts(product: SKProduct) {
+```
+func buyProducts(product: SKProduct) {
         let payment = SKPayment(product: product)
 		SKPaymentQueue.defaultQueue().addPayment(payment)
     }
@@ -46,7 +55,8 @@ iOS开发之内购-AppStore
 
 5，处理购买结果
 
-```extension DKPayManager : SKPaymentTransactionObserver {
+```
+extension DKPayManager : SKPaymentTransactionObserver {
     func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         
         for tran in transactions {
@@ -82,7 +92,8 @@ iOS开发之内购-AppStore
 ```
 6，服务器验证
 
-```func verifyPruchase(transactionIdentifier:String){
+```
+func verifyPruchase(transactionIdentifier:String){
         
         let receiptURL = NSBundle.mainBundle().appStoreReceiptURL
 
@@ -95,7 +106,8 @@ iOS开发之内购-AppStore
 ```
 7，结束后，finishTransation
 
-```func finishTransation(transaction: SKPaymentTransaction) {
+```
+func finishTransation(transaction: SKPaymentTransaction) {
         SKPaymentQueue.defaultQueue().finishTransaction(transaction)
     }
 ```
