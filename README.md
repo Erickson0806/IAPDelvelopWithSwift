@@ -14,7 +14,7 @@ func requestProducts(){
         let request = SKProductsRequest(productIdentifiers: set as! Set<String>)
         request.delegate = self
         request.start()
-    }
+}
 ```
 3.点击某项商品后，并且在获取到商品列表后进行购买
 
@@ -50,7 +50,7 @@ extension PayManager : SKProductsRequestDelegate {
 func buyProducts(product: SKProduct) {
         let payment = SKPayment(product: product)
 		SKPaymentQueue.defaultQueue().addPayment(payment)
-    }
+}
 ```
 
 5，处理购买结果
@@ -102,14 +102,14 @@ func verifyPruchase(transactionIdentifier:String){
         let encodeStr = receiptData?.base64EncodedStringWithOptions(.EncodingEndLineWithCarriageReturn)
         //发送encodeStr 到自己的服务器
 		
-    }
+}
 ```
 7，结束后，finishTransation
 
 ```
 func finishTransation(transaction: SKPaymentTransaction) {
         SKPaymentQueue.defaultQueue().finishTransaction(transaction)
-    }
+}
 ```
 
 
