@@ -1,12 +1,12 @@
 # IAPDelvelopWithSwift
 iOS开发之内购-AppStore
-1.在应用启动时添加一个交易队列观察者
+### 1.在应用启动时添加一个交易队列观察者
 
 ```
 SKPaymentQueue.defaultQueue().addTransactionObserver(self)
 ```
 
-2.询问苹果的服务器能够销售哪些商品
+###2.询问苹果的服务器能够销售哪些商品
 
 ```
 func requestProducts(){
@@ -16,7 +16,7 @@ func requestProducts(){
         request.start()
 }
 ```
-3.点击某项商品后，并且在获取到商品列表后进行购买
+###3.点击某项商品后，并且在获取到商品列表后进行购买
 
 
 ```
@@ -44,7 +44,7 @@ extension PayManager : SKProductsRequestDelegate {
     }
 }
 ```
-4.进行购买
+###4.进行购买
 
 ```
 func buyProducts(product: SKProduct) {
@@ -53,7 +53,7 @@ func buyProducts(product: SKProduct) {
 }
 ```
 
-5，处理购买结果
+###5，处理购买结果
 
 ```
 extension DKPayManager : SKPaymentTransactionObserver {
@@ -90,7 +90,7 @@ extension DKPayManager : SKPaymentTransactionObserver {
     }
 }
 ```
-6，服务器验证
+###6，服务器验证
 
 ```
 func verifyPruchase(transactionIdentifier:String){
@@ -104,7 +104,7 @@ func verifyPruchase(transactionIdentifier:String){
 		
 }
 ```
-7，结束后，finishTransation
+###7，结束后，finishTransation
 
 ```
 func finishTransation(transaction: SKPaymentTransaction) {
